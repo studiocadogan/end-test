@@ -1,0 +1,23 @@
+{
+  "name": "end-clothing-test",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "src/*"
+    ]
+  },
+  "version": "0.1.0",
+  "scripts": {
+    "start": "yarn workspace server start"
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/js/app.bundle.js",
+      "maxSize": "170 kB"
+    },
+    {
+      "path": "./dist/js/lib.bundle.js",
+      "maxSize": "110 kB"
+    }
+  ]
+}
