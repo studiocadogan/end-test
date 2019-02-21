@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { map } from "lodash/fp";
+import { map, exists } from "lodash/fp";
 import { styles } from "../../misc/styles";
 import { compose, withProps } from "recompose";
 import {
@@ -76,7 +76,11 @@ const renderChildRoute = childRoutes =>
       <ChildRoute key={childRoute.id}>
         <a
           className={childRoute.is_column_header ? `is-header` : ``}
-          href={`/${childRoute.custom_category_link}` || childRoute.url_path}
+          href={
+            childRoute.custom_category_link
+              ? `/${childRoute.custom_category_link}`
+              : childRoute.url_path
+          }
         >
           {childRoute.custom_category_name || childRoute.name}
         </a>
