@@ -41,6 +41,11 @@ const ChildRoute = styled.div`
       color: rgba(0, 0, 0, 0.5);
     }
   }
+
+  .is-header {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `;
 
 const ChildRouteColumn = styled.div`
@@ -69,7 +74,12 @@ const renderChildRoute = childRoutes =>
   map(childRoute =>
     childRoute.include_in_menu ? (
       <ChildRoute key={childRoute.id}>
-        <a href={childRoute.url_path}>{childRoute.name}</a>
+        <a
+          className={childRoute.is_column_header ? `is-header` : ``}
+          href={`/${childRoute.custom_category_link}` || childRoute.url_path}
+        >
+          {childRoute.custom_category_name || childRoute.name}
+        </a>
       </ChildRoute>
     ) : null
   )(childRoutes);
